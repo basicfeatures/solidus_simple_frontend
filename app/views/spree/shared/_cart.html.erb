@@ -1,0 +1,14 @@
+<div class="cart">
+  <% if @order.line_items.empty? %>
+    <h2><%= t("spree.your_cart_is_empty") %></h2>
+    <%= link_to t("spree.continue_shopping"), products_path, class: "button" %>
+  <% else %>
+    <%= form_for @order, url: update_cart_path do |order_form| %>
+      <%= render "spree/orders/form", order_form: order_form %>
+      <%= button_tag class: "primary checkout", name: "checkout" do %>
+        <%= t("spree.checkout") %>
+      <% end %>
+    <% end %>
+    <%#= render template: "spree/coupon_codes/new" %>
+  <% end %>
+</div> 

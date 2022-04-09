@@ -1,0 +1,7 @@
+<% unless spree_user_signed_in? %>
+  <%= link_to t("spree.login"), spree.login_path %>
+  <%= link_to t("spree.signup"), spree.signup_path %>
+<% else %>
+  <%= link_to t("spree.my_account"), spree.account_path %>
+  <%= link_to t("spree.logout"), spree.logout_path, method: Devise.sign_out_via %>
+<% end %>

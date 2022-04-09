@@ -1,36 +1,38 @@
-<!doctype html>
-<!--[if lt IE 7 ]> <html class="ie ie6" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if IE 7 ]>    <html class="ie ie7" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if IE 8 ]>    <html class="ie ie8" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if IE 9 ]>    <html class="ie ie9" lang="<%= I18n.locale %>"> <![endif]-->
-<!--[if gt IE 9]><!--><html lang="<%= I18n.locale %>"><!--<![endif]-->
-  <head data-hook="inside_head">
-    <%= render partial: 'spree/shared/head' %>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1" name="viewport">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "solidus_simple_frontend", media: "all", "data-turbolinks-track": "reload" %>
+    <%= javascript_pack_tag "solidus_simple_frontend", "data-turbolinks-track": "reload" %>
+    <%= canonical_tag(current_store.url) %>
   </head>
-  <body class="<%= body_class %>" id="<%= @body_id || 'default' %>" data-hook="body">
-
-    <div class="container">
-
-      <%= render partial: 'spree/shared/header' %>
-
-      <div id="wrapper" class="row" data-hook>
-
-        <%= taxon_breadcrumbs(@taxon) %>
-
-        <%= render partial: 'spree/shared/sidebar' if content_for? :sidebar %>
-
-        <div id="content" class="columns <%= !content_for?(:sidebar) ? "sixteen" : "twelve omega" %>" data-hook>
-          <%= flash_messages %>
-          <%= yield %>
-        </div>
-
-        <%= yield :templates %>
-
-      </div>
-
-      <%= render partial: 'spree/shared/footer' %>
-
-    </div>
-
+  <body>
+    <% unless flash.empty? %>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:p, value, class: "flash #{ key }") %>
+      <% end %>
+    <% end %>
+    <header>
+      <% if @show_infobar == true %>
+        <%= render partial: "spree/shared/infobar" %>
+      <% end %>
+      <%= link_to spree.root_path do %>
+        <%= image_tag "logo.svg", class: "logo", alt: title %>
+      <% end %>
+    </header>
+    <nav>
+      <% unless current_page?(checkout_path) %>
+        <%= menu_trigger %>
+        <%= render partial: "spree/shared/menu" %>
+      <% end %>
+    </nav>
+    <%= yield %>
+    <%= render partial: "spree/shared/footer" %>
   </body>
 </html>
+

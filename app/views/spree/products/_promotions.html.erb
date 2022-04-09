@@ -1,9 +1,8 @@
 <% promotions = @product.possible_promotions %>
 <% if promotions.any? %>
   <div id="promotions">
-    <h3><%= t('spree.promotions') %></h3>
+    <!--<h3><%#= t('spree.promotions') %></h3>-->
     <% promotions.each do |promotion| %>
-    <div>
       <h4><%= promotion.name %></h4>
       <p><%= promotion.description %></p>
       <% if promotion.products.any? %>
@@ -13,7 +12,7 @@
         <% end %>
       </ul>
       <% end %>
-    </div>
     <% end %>
   </div>
 <% end %>
+

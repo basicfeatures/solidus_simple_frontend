@@ -1,4 +1,4 @@
-<% taxon = Spree::Taxon.find_by(name: "Dresses") %>
+<% taxon = Spree::Taxon.find_by_name!("Dresses") %>
 <%= link_to(seo_url(taxon), itemprop: "productCollection", itemscope: "", offers: taxon, itemtype: "https://schema.org/ProductCollection") do %>
   <div class="cover">
     <h2>50% Rabatt På Alt</h2>
@@ -7,7 +7,7 @@
     <%= image_tag "tobi_cream_cosy_cable_knit_cut_out_buckle_turtleneck_sweater_removebg.png" %>
   </div>
 <% end %>
-<% taxon = Spree::Taxon.find_by(name: "Jackets") %>
+<% taxon = Spree::Taxon.find_by_name!("Jackets") %>
 <%= link_to(seo_url(taxon), itemprop: "productCollection", itemscope: "", offers: taxon, itemtype: "https://schema.org/ProductCollection") do %>
   <div class="cover">
     <h2>Sweater Dresses</h2>
@@ -16,7 +16,7 @@
     <%= image_tag "tobi_rose_nikki_off_shoulder_sweater_dress_removebg.png" %>
   </div>
 <% end %>
-<% taxon = Spree::Taxon.find_by(name: "Skirts") %>
+<% taxon = Spree::Taxon.find_by_name!("Skirts") %>
 <%= link_to(seo_url(taxon), itemprop: "productCollection", itemscope: "", offers: taxon, itemtype: "https://schema.org/ProductCollection") do %>
   <div class="cover">
     <h2>Valentindags-spesial</h2>
@@ -25,22 +25,4 @@
     <%= image_tag "tobi_sage_rhea_ribbed_tank_bodycon_mini_dress_removebg.png" %>
   </div>
 <% end %>
-<div class="instafeed">
-  <h2>Følg @<a href="#">stacy</a> på Instagram</h2>
-  <div>
-    <%= image_tag "insta1.jpg" %>
-    <%= image_tag "insta2.jpg" %>
-    <%= image_tag "insta3.jpg" %>
-    <%= image_tag "insta4.jpg" %>
-    <%= image_tag "insta5.jpg" %>
-    <%= image_tag "insta6.jpg" %>
-    <%= image_tag "insta7.jpg" %>
-    <%= image_tag "insta8.jpg" %>
-    <%= image_tag "insta9.jpg" %>
-    <%= image_tag "insta10.jpg" %>
-    <%= image_tag "insta11.jpg" %>
-    <%= image_tag "insta12.jpg" %>
-  </div>
-  <p>Følg og tag oss med dine @<a href="#">stacy</a>-bilder for å havne her på forsiden</p>
-</div>
 
