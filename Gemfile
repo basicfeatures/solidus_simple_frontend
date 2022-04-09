@@ -73,3 +73,5 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "solidus", "~> 3.2.alpha", :git => "https://github.com/peterberkenbosch/solidus/", :branch => "rails7"
